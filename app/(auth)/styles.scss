@@ -1,0 +1,17 @@
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.size-full {
+    width: 100%;
+    height: 100vh;
+}
+
+@media (max-width: 640px) {
+
+    .size-full {
+        padding: 0 1.5rem;
+    }
+}
