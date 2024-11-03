@@ -44,9 +44,9 @@ const AuthForm = ({ type }: { type: string }) => {
                 };
 
                 localStorage.setItem('user', JSON.stringify(userData));
+                console.log(userData)
 
-                // Set auth cookie to true on successful sign-up
-                document.cookie = "auth=true; path=/;"; // The `path=/` makes it accessible across the app
+                document.cookie = "auth=true; path=/;";
 
                 router.push('/');
             }
@@ -54,7 +54,6 @@ const AuthForm = ({ type }: { type: string }) => {
                 const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
 
                 if (storedUser.email === data.email && storedUser.password === data.password) {
-                    // Set auth cookie to true on successful sign-in
                     document.cookie = "auth=true; path=/;";
 
                     router.push('/');
@@ -83,11 +82,11 @@ const AuthForm = ({ type }: { type: string }) => {
                 </Link>
 
                 <div className="flex flex-col gap-1 md:gap-3">
-                    <h1 className="text-24 lg:text-36 font-semibold text-gray-900">
-                        {type === 'sign-in' ? 'Sign In' : 'Sign Up'}
+                    <h1 className="text-24 lg:text-36 font-semibold text-[#213F7D]">
+                        Welcome!
                     </h1>
                     <p className="text-16 font-normal text-gray-600">
-                        {type === 'sign-in' ? 'Please enter your login details' : 'Create an account to get started'}
+                        {type === 'sign-in' ? 'Enter details to login' : 'Create an account to get started'}
                     </p>
                 </div>
             </header>
