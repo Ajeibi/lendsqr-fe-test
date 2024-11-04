@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Avatar, AvatarFallback } from "./ui/avatar";
+import "./styles.scss";
 
 const PopoverComponent = () => {
     const [user, setUser] = useState({ firstName: '', lastName: '' });
@@ -22,32 +23,32 @@ const PopoverComponent = () => {
     return (
         <div>
             <Popover>
-                <PopoverTrigger className="flex flex-row gap-3 text-center items-center">
-                    <Avatar className="h-10 w-10 border border-[#213F7D] text-[#213F7D]">
+                <PopoverTrigger className="trigger">
+                    <Avatar className="avatar1">
                         <AvatarFallback className="uppercase">
                             {getUserInitials(`${user.firstName} ${user.lastName}`)}
                         </AvatarFallback>
                     </Avatar>
-                    <div className="flex items-center gap-3 max-sm:hidden">
-                        <p className="text-[#213F7D]">
+                    <div className="firstName">
+                        <p className="">
                             {user.firstName}
                         </p>
-                        <ChevronDown size={15} className="text-[#213F7D]" />
+                        <ChevronDown size={15} className="chevron" />
                     </div>
                 </PopoverTrigger>
                 <PopoverContent
-                    className="max-md:w-72 md:w-[18.75rem] p-0 bg-white"
+                    className="popoverContent"
                     align="start"
                 >
-                    <div className="p-5 flex items-center gap-3 bg-[#FAF6FE] mb-3">
-                        <Avatar className="h-[3.75rem] w-[3.75rem] border border-[#213F7D] bg-[#213F7D] text-white">
+                    <div className="fullName">
+                        <Avatar className="avatar2">
                             <AvatarFallback className="uppercase">
                                 {getUserInitials(`${user.firstName} ${user.lastName}`)}
                             </AvatarFallback>
                         </Avatar>
 
                         <div className="space-y-0.5 capitalize">
-                            <p className="text-[#213F7D] font-medium">
+                            <p className="fullNameP">
                                 {user.firstName} {user.lastName}
                             </p>
                         </div>

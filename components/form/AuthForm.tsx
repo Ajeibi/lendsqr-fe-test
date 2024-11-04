@@ -12,8 +12,8 @@ import { authFormSchema } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import CustomInput from './CustomInput';
+import './styles.scss';
 
-// import './styles.scss';
 
 const AuthForm = ({ type }: { type: string }) => {
     const router = useRouter();
@@ -71,8 +71,8 @@ const AuthForm = ({ type }: { type: string }) => {
 
     return (
         <section className="auth-form">
-            <header className='flex flex-col gap-5 md:gap-8'>
-                <Link href="/" className="cursor-pointer flex items-center gap-1">
+            <header className='authHeader'>
+                <Link href="/" className="authLink">
                     <Image
                         src="/icons/logo.svg"
                         width={100}
@@ -81,11 +81,11 @@ const AuthForm = ({ type }: { type: string }) => {
                     />
                 </Link>
 
-                <div className="flex flex-col gap-1 md:gap-3">
-                    <h1 className="text-24 lg:text-36 font-semibold text-[#213F7D]">
+                <div className="welcomeWrapper">
+                    <h1 className="">
                         Welcome!
                     </h1>
-                    <p className="text-16 font-normal text-gray-600">
+                    <p className="">
                         {type === 'sign-in' ? 'Enter details to login' : 'Create an account to get started'}
                     </p>
                 </div>
@@ -95,7 +95,7 @@ const AuthForm = ({ type }: { type: string }) => {
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
                     {type === 'sign-up' && (
                         <>
-                            <div className="flex gap-4">
+                            <div className="form1">
                                 <CustomInput
                                     control={form.control}
                                     name="firstName"
@@ -103,7 +103,6 @@ const AuthForm = ({ type }: { type: string }) => {
                                     placeholder="Enter your first name"
                                 />
                                 <CustomInput
-
                                     control={form.control}
                                     name="lastName"
                                     label="Last Name"
@@ -122,7 +121,7 @@ const AuthForm = ({ type }: { type: string }) => {
                                 label="City"
                                 placeholder="Enter your city"
                             />
-                            <div className="flex gap-4">
+                            <div className="form1">
                                 <CustomInput
                                     control={form.control}
                                     name="state"
@@ -152,14 +151,14 @@ const AuthForm = ({ type }: { type: string }) => {
                         placeholder="Enter your password"
                     />
 
-                    <div className="flex flex-col gap-4">
+                    <div className="formBtn">
                         <Button
                             type="submit"
                             disabled={isLoading}
                             className="form-btn">
                             {isLoading ? (
                                 <>
-                                    <Loader2 size={20} className="animate-spin" /> &nbsp;
+                                    <Loader2 size={20} /> &nbsp;
                                     Loading...
                                 </>
                             ) : type === 'sign-in' ? 'Sign In' : 'Sign Up'}
@@ -168,8 +167,8 @@ const AuthForm = ({ type }: { type: string }) => {
                 </form>
             </Form>
 
-            <footer className="flex justify-center gap-1">
-                <p className="text-14 font-normal text-gray-600">
+            <footer className="authFooter">
+                <p className="">
                     {type === 'sign-in' ? "Don't have an account?" : "Already have an account?"}
                 </p>
                 <Link href={type === 'sign-in' ? '/sign-up' : '/sign-in'} className="form-link">

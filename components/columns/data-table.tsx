@@ -15,9 +15,10 @@ import {
     TableHeader,
     TableRow,
 } from "../ui/table";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
+import FilterPopover from "../FilterPopover";
+import './styles.scss';
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
@@ -44,25 +45,20 @@ export function DataTable<TData extends { id: number }, TValue>({
 
     return (
         <div>
-            <div className="bg-white">
+            <div className="tableWrapper">
                 <Table>
                     <TableHeader>
                         {table.getHeaderGroups().map((headerGroup) => (
                             <TableRow key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => (
-                                    <TableHead key={header.id} className="pr-7">
+                                    <TableHead key={header.id} className="tableHead">
                                         {header.isPlaceholder ? null : (
-                                            <div className="flex items-center gap-4">
+                                            <div className="tableDiv">
                                                 {flexRender(
                                                     header.column.columnDef.header,
                                                     header.getContext()
                                                 )}
-                                                <Image
-                                                    src="/icons/filter.png"
-                                                    alt="icon"
-                                                    width={16}
-                                                    height={16}
-                                                />
+                                                <FilterPopover />
                                             </div>
                                         )}
                                     </TableHead>
@@ -75,13 +71,13 @@ export function DataTable<TData extends { id: number }, TValue>({
                             table.getRowModel().rows.map((row) => (
                                 <TableRow
                                     key={row.id}
-                                    className="text-base hover:bg-gray-100 cursor-pointer"
+                                    className="hover:bg-gray-100 tableRow"
                                     onClick={() => router.push(`/${row.original.id}`)}
                                 >
                                     {row.getVisibleCells().map((cell) => (
                                         <TableCell
                                             key={cell.id}
-                                            className="p-5 text-sm"
+                                            className="tableCell"
                                         >
                                             {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                         </TableCell>
@@ -90,7 +86,7 @@ export function DataTable<TData extends { id: number }, TValue>({
                             ))
                         ) : (
                             <TableRow>
-                                <TableCell colSpan={columns.length} className="h-24 text-center">
+                                <TableCell colSpan={columns.length} className="noResults">
                                     No results.
                                 </TableCell>
                             </TableRow>

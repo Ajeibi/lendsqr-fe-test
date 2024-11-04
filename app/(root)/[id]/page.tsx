@@ -7,9 +7,11 @@ import { ScrollBar } from '@/components/ui/scroll-area';
 import { getUserInitials } from '@/lib/utils';
 import { User } from '@/types';
 import { ScrollArea } from '@radix-ui/react-scroll-area';
-import { Star } from 'lucide-react';
+import { MoveLeft, Star } from 'lucide-react';
+import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import './styles.scss';
 
 const user_nav_tabs = [
     { name: "General Details", href: "/" },
@@ -55,55 +57,235 @@ const DynamicPage = () => {
     };
 
     return (
-        <div className="mt-3 text-black-1 md:mr-2">
-            <section className="flex justify-between items-center">
-                <div className="md:text-base text-xl font-semibold">User Details</div>
-                <div className="hidden sm:flex gap-3">
-                    <Button className="border rounded-lg border-red-500 text-red-500 text-xs">BLACKLIST USER</Button>
-                    <Button className="border rounded-lg border-blue-500 text-blue-500 text-xs">ACTIVATE USER</Button>
-                </div>
-            </section>
+        <>
+            <div className="headerWrapper">
+                <Link href="/" className=''>
+                    <MoveLeft size={50} />
+                </Link>
+                <section className="section1">
+                    <div className="details">User Details</div>
+                    <div className="btnWrapper">
+                        <Button className="btn1">BLACKLIST USER</Button>
+                        <Button className="btn2">ACTIVATE USER</Button>
+                    </div>
+                </section>
 
-            <section className="flex justify-between md:hidden mt-5">
-                <Button className="border rounded-lg border-red-500 text-red-500 text-xs">BLACKLIST USER</Button>
-                <Button className="border rounded-lg border-blue-500 text-blue-500 text-xs">ACTIVATE USER</Button>
-            </section>
+                <section className="section2">
+                    <Button className="btn1">BLACKLIST USER</Button>
+                    <Button className="btn2">ACTIVATE USER</Button>
+                </section>
 
-            <section className="mt-5 bg-white">
-                <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center">
-                        <Avatar className="h-20 w-20 text-white bg-[#213F7D]">
-                            <AvatarFallback className="uppercase md:text-4xl">
-                                {getUserInitials(user?.personalInfo?.fullName || "")}
-                            </AvatarFallback>
-                        </Avatar>
-                        <div className="text-center sm:text-left">
-                            <h1 className="text-xl font-semibold">{personalInfo.fullName}</h1>
-                            <p className="text-sm">{personalInfo.emailAddress}</p>
+                <section className="section3">
+                    <div className="section3-1">
+                        <div className="section3-1-1">
+                            <Avatar className="avatar">
+                                <AvatarFallback className="fallback">
+                                    {getUserInitials(user?.personalInfo?.fullName || "")}
+                                </AvatarFallback>
+                            </Avatar>
+                            <div className="fullNameDiv">
+                                <h1 className="">{personalInfo.fullName}</h1>
+                                <p className="">{personalInfo.userId}</p>
+                            </div>
+                        </div>
+
+                        <div className="starsWrapper">
+                            <p className="">User's Tier</p>
+                            <div className="stars">
+                                {renderStars()}
+                            </div>
+                        </div>
+
+                        <div className="bankWrapper">
+                            <h1 className="">{educationAndEmployment.loanRepayment}</h1>
+                            <p className="">{personalInfo.bankAccount}/{personalInfo.bankName}</p>
                         </div>
                     </div>
 
-                    <div className="text-center">
-                        <p className="text-xl md:text-sm">User's Tier</p>
-                        <div className="flex items-center justify-center">
-                            {renderStars()}
-                        </div>
+                    <div className="tabs overflow-x-auto">
+                        <ScrollArea>
+                            <Tabs tabs={user_nav_tabs} />
+                            <ScrollBar orientation="horizontal" className="pt-1" />
+                        </ScrollArea>
+                    </div>
+                    <div className="nav-tabs">
+                        {user_nav_tabs.map((tab, index) => (
+                            <Link
+                                key={index}
+                                href={tab.href}
+                                className={`navLinks ${index === 0 ? 'border-b-2 border-blue-500 text-blue-500' : ''
+                                    } hover:text-blue-500`}
+                            >
+                                {tab.name}
+                            </Link>
+                        ))}
                     </div>
 
-                    <div className="text-center sm:text-right">
-                        <p className="text-2xl font-semibold text-black">₦200,000.00</p>
-                        <p className="text-sm">{personalInfo.bankAccount}/{personalInfo.bankName}</p>
+                </section>
+            </div>
+
+            <section className='infoSection'>
+                {/* PERSONAL INFO */}
+                <h2 className="">
+                    Personal Information
+                </h2>
+                <div className="gaps" />
+                <div className="grid grid-cols-1 min-[360px]:grid-cols-1 md:grid-cols-4 gap-14 capitalize pb-5">
+                    <div className="space-y-2">
+                        <p className="infoP">FULL NAME</p>
+                        <p className="infoP1">
+                            {personalInfo.fullName}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="infoP">PHONE NUMBER</p>
+                        <p className="infoP1">
+                            {personalInfo.phoneNumber}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="infoP">EMAIL ADDRESS</p>
+                        <p className="infoP1">
+                            {personalInfo.emailAddress}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="infoP">BVN</p>
+                        <p className="infoP1">
+                            {personalInfo.bvn}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="infoP">GENDER</p>
+                        <p className="infoP1">
+                            {personalInfo.gender}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="infoP">MARITAL STATUS</p>
+                        <p className="infoP1">
+                            {personalInfo.maritalStatus}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="infoP">CHILDREN</p>
+                        <p className="infoP1">
+                            {personalInfo.children}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="infoP">TYPE OF RESIDENCE</p>
+                        <p className="infoP1">
+                            {personalInfo.typeOfResidence}
+                        </p>
                     </div>
                 </div>
-
-                <div className="flex mt-6 justify-between overflow-x-auto">
-                    <ScrollArea>
-                        <Tabs tabs={user_nav_tabs} />
-                        <ScrollBar orientation="horizontal" className="pt-1" />
-                    </ScrollArea>
+                <hr className="my-4 border-gray-300" />
+                {/* EDUCATION AND EMPLOYMENT */}
+                <h2 className="">
+                    Education and Employment
+                </h2>
+                <div className="gaps" />
+                <div className="grid grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-4 gap-14 capitalize pb-5">
+                    <div className="space-y-2">
+                        <p className="infoP">LEVEL OF EDUCATION</p>
+                        <p className="infoP1">
+                            {educationAndEmployment.levelOfEducation}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="infoP">EMPLOYMENT STATUS</p>
+                        <p className="infoP1">
+                            {educationAndEmployment.employmentStatus}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="infoP">SECTOR OF EMPLOYMENT</p>
+                        <p className="infoP1">
+                            {educationAndEmployment.sectorOfEmployment}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="infoP">DURATION OF EMPLOYMENT</p>
+                        <p className="infoP1">
+                            {educationAndEmployment.durationOfEmployment}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="infoP">OFFICE EMAIL</p>
+                        <p className="infoP1">
+                            {educationAndEmployment.officeEmail}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="infoP">MONTHLY INCOME</p>
+                        <p className="infoP1">
+                            {educationAndEmployment.monthlyIncome}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="infoP">LOAN REPAYMENT</p>
+                        <p className="infoP1">
+                            {educationAndEmployment.loanRepayment}
+                        </p>
+                    </div>
                 </div>
+                <hr className="my-4 border-gray-300" />
+                {/* SOCIALS */}
+                <h2 className="">
+                    Socials
+                </h2>
+                <div className="gaps" />
+                <div className="grid grid-cols-1 min-[360px]:grid-cols-1 md:grid-cols-2 gap-14 capitalize pb-5">
+                    <div className="space-y-2">
+                        <p className="infoP">TWITTER</p>
+                        <p className="infoP1">
+                            {socials.twitter}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="infoP">FACEBOOK</p>
+                        <p className="infoP1">
+                            {socials.facebook}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="infoP">INSTAGRAM</p>
+                        <p className="infoP1">
+                            {socials.instagram}
+                        </p>
+                    </div>
+                </div>
+                <hr className="my-4 border-gray-300" />
+                {/* GUARANTORS */}
+                <h2 className="pt-5">Guarantors</h2>
+                <div className="gaps" />
+                <div className="grid grid-cols-1 min-[360px]:grid-cols-1 md:grid-cols-4 gap-14 capitalize">
+                    {guarantors.map((guarantor, index) => (
+                        <React.Fragment key={index}>
+                            {index > 0 && <hr className="border-gray-300 col-span-full" />}
+                            <div className="space-y-2">
+                                <p className="infoP">FULL NAME</p>
+                                <p className="infoP1">{guarantor.fullName}</p>
+                            </div>
+                            <div className="space-y-2">
+                                <p className="infoP">PHONE NUMBER</p>
+                                <p className="infoP1">{guarantor.phoneNumber}</p>
+                            </div>
+                            <div className="space-y-2">
+                                <p className="infoP">EMAIL ADDRESS</p>
+                                <p className="infoP1">{guarantor.email}</p>
+                            </div>
+                            <div className="space-y-2">
+                                <p className="infoP">RELATIONSHIP</p>
+                                <p className="infoP1">{guarantor.relationship}</p>
+                            </div>
+                        </React.Fragment>
+                    ))}
+                </div>
+
             </section>
-        </div>
+        </>
     );
 };
 

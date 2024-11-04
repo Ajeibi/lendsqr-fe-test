@@ -1,0 +1,68 @@
+.tableWrapper {
+    background-color: white;
+    color: #344054;
+}
+
+.tableHead {
+    padding-right: 28px;
+}
+
+.tableDiv {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.tableRow {
+    font-size: 14px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.tableCell {
+    padding: 20px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.noResults {
+    height: 96px;
+    text-align: center;
+}
+
+//filter popover
+.trigger {
+    cursor: pointer;
+}
+
+.popovercontent {
+    padding: 16px;
+    width: 256px;
+    background-color: white;
+    border-width: 1px;
+    border-radius: 4px;
+
+}
+
+.input {
+    width: 100%;
+    padding: 8px;
+    border-width: 1px;
+    border-radius: 4px;
+}
+
+.btn {
+    margin-top: 16px;
+    width: 100%;
+    background-color: #00214F;
+    color: white;
+}
+
+.column {
+    display: inline-block;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 16px;
+}

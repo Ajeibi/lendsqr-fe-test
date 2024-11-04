@@ -1,12 +1,13 @@
 import React from 'react'
 import Card from './UserCard'
+import './styles.scss';
 
 const HomeCard = () => {
     return (
-        <section className='text-black-1'>
-            <h1 className="text-2xl font-semibold mb-5">Users</h1>
+        <section className='homeCardWrapper'>
+            <h1 className="users">Users</h1>
 
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-5">
+            <div className="cardGrids">
                 <Card
                     image="/icons/card1.png"
                     title="USERS"

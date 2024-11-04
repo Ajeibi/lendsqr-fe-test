@@ -55,7 +55,7 @@ export const columns: ColumnDef<User>[] = [
             const status = row.getValue("status") as string;
             const { textClass, bgClass } = getStatusClasses(status);
             return (
-                <span className={`inline-block px-3 py-1 rounded-2xl ${textClass} ${bgClass}`}>
+                <span className={`column ${textClass} ${bgClass}`}>
                     {status}
                 </span>
             );

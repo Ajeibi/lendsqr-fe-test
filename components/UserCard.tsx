@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import './styles.scss';
 
 interface CardProps {
     image: string;
@@ -20,10 +21,10 @@ const Card: React.FC<CardProps> = ({ image, title, subtitle, bgColor = "transpar
                     : bgColor;
 
     return (
-        <div className="flex flex-col items-start bg-white p-5 w-full rounded-xl shadow-lg">
+        <div className="cardWrapper shadow-lg">
             <div
                 style={{ backgroundColor: backgroundColorWithOpacity }}
-                className='p-2 rounded-full'
+                className='image'
             >
                 <Image
                     src={image}
@@ -32,8 +33,8 @@ const Card: React.FC<CardProps> = ({ image, title, subtitle, bgColor = "transpar
                     height={20}
                 />
             </div>
-            <h2 className="text-sm font-semibold my-2">{title}</h2>
-            <p className="text-xl font-bold">{subtitle}</p>
+            <h2 className="">{title}</h2>
+            <p className="">{subtitle}</p>
         </div>
     );
 };

@@ -5,7 +5,7 @@ import { Input } from "../ui/input";
 
 export default function SearchInput() {
     return (
-        <div className="relative w-full max-w-2xl">
+        <div className="z">
             <Input
                 type="text"
                 placeholder="Search for anything"

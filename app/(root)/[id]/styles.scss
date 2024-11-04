@@ -1,0 +1,274 @@
+.star {
+    height: 20px;
+    width: 20px;
+}
+
+.headerWrapper {
+    margin-top: 12px;
+    color: #00214f;
+
+    @media (min-width: 768px) {
+        margin-right: 8px;
+    }
+}
+
+.section1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+}
+
+.btnWrapper {
+    display: none;
+
+    @media (min-width: 640px) {
+        display: flex;
+    }
+
+    gap: 12px;
+}
+
+.btn1 {
+    border-width: 1px;
+    border-radius: 8px;
+    border-color: #ef4444;
+    color: #ef4444;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.btn2 {
+    border-width: 1px;
+    border-radius: 8px;
+    border-color: #2e90fa;
+    color: #2e90fa;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.section2 {
+    display: flex;
+    justify-content: space-between;
+
+    @media (min-width: 768px) {
+        display: none;
+    }
+
+    margin-top: 20px;
+}
+
+.section3 {
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+}
+
+.section3-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @media (min-width: 640px) {
+        flex-direction: row;
+    }
+
+    @media (min-width: 640px) {
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.section3-1-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @media (min-width: 640px) {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.avatar {
+    height: 80px;
+    width: 80px;
+    color: white;
+    background-color: #213F7D;
+}
+
+.fallback {
+    @media (min-width: 768px) {
+        font-size: 36px;
+        line-height: 40px;
+    }
+}
+
+.fullNameDiv {
+    text-align: center;
+
+    @media (min-width: 640px) {
+        text-align: left;
+    }
+}
+
+.fullNameDiv h1 {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+}
+
+.fullNameDiv p {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.bankWrapper {
+    text-align: center;
+
+    @media (min-width: 640px) {
+        text-align: right;
+    }
+}
+
+.bankWrapper h1 {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+}
+
+.bankWrapper p {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.tabs {
+    display: flex;
+
+    @media (min-width: 768px) {
+        display: none;
+    }
+
+    margin-top: 24px;
+    justify-content: space-between;
+}
+
+.nav-tabs {
+    display: none;
+
+    @media (min-width: 768px) {
+        display: flex;
+    }
+
+    margin-top: 30px;
+    justify-content: space-between;
+}
+
+.navLinks {
+    color: #475467;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+//INFO SECTION
+.infoSection {
+    margin-top: 20px;
+    color: #00214f;
+    background-color: white;
+    padding: 20px;
+}
+
+.infoSection h2 {
+    font-size: 14px;
+    line-height: 20px;
+
+    @media (min-width: 768px) {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+.infoP {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.infoP1 {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.starsWrapper {
+    text-align: center;
+}
+
+.starsWrapper p {
+    font-size: 20px;
+    line-height: 28px;
+
+    @media (min-width: 768px) {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
+
+.stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gaps {
+    margin-top: 8px;
+    margin-bottom: 16px;
+
+    @media (min-width: 768px) {
+        margin-top: 12px;
+        margin-bottom: 24px;
+    }
+}
+
+.personalInformation {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    text-transform: capitalize;
+    padding-bottom: 5px;
+
+    @media (min-width: 360px) {
+        grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}
+
+.educationEmployment {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    text-transform: capitalize;
+    padding-bottom: 5px;
+
+    @media (min-width: 360px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

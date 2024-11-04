@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { authFormSchema } from '@/lib/utils';
 import { FormControl, FormField, FormLabel, FormMessage } from '../ui/form';
 import { Input } from '../ui/input';
+import './styles.scss';
 
 const formSchema = authFormSchema('sign-up');
 
@@ -24,17 +25,17 @@ const CustomInput = ({ control, name, label, placeholder }: CustomInputProps) =>
                     <FormLabel className="form-label">
                         {label}
                     </FormLabel>
-                    <div className="flex w-full flex-col">
+                    <div className="form-control">
                         <FormControl>
                             <Input
                                 placeholder={placeholder}
                                 className="input-class"
                                 type={name === 'password' ? 'password' : 'text'}
-                                value={field.value || ''} // Ensure value is an empty string if undefined
-                                onChange={field.onChange} // Ensure onChange is passed correctly
+                                value={field.value || ''}
+                                onChange={field.onChange}
                             />
                         </FormControl>
-                        <FormMessage className="form-message mt-2" />
+                        <FormMessage className="form-message margin" />
                     </div>
                 </div>
             )}

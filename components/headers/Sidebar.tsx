@@ -6,37 +6,37 @@ import React from 'react'
 
 const Sidebar = () => {
     return (
-        <section className='text-black-2 mb-20 pr-4 overflow-y-auto max-h-[100vh]'>
-            <div className='pb-5 flex items-center gap-5'>
+        <section className='sidebarWrapper overflow-y-auto'>
+            <div className='organisation'>
                 <Image
                     src='/icons/organisation.png'
                     alt='organisation'
                     width={20}
                     height={20}
                 />
-                <div className="text-sm flex gap-4 items-center cursor-pointer">
+                <div className="organisationDiv">
                     Switch Organization
                     <ChevronDown size={15} />
                 </div>
             </div>
-            <div className='flex items-center my-4 gap-5'>
+            <div className='dashboard'>
                 <Image
                     src='/icons/dashboard.png'
                     alt='dashboard'
                     width={20}
                     height={20}
                 />
-                <p className="text-sm">Dashboard</p>
+                <p className="">Dashboard</p>
             </div>
             {sidebarLinks.map((section) => (
                 <div key={section.heading}>
-                    <h2 className="text-xs font-semibold text-black-2 my-3">
+                    <h2 className="homeSidebar">
                         {section.heading}
                     </h2>
 
                     {section.links.map((link) => (
                         <Link href={link.route} key={link.label}
-                            className="flex items-center gap-5 py-2 text-xs"
+                            className="homeSidebar-Link"
                         >
                             <Image
                                 src={link.imgURL}

@@ -1,0 +1,130 @@
+//popover component
+
+.trigger {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    text-align: center;
+    align-items: center;
+}
+
+.avatar1 {
+    height: 40px;
+    width: 40px;
+    border-width: 1px;
+    border-color: #213F7D;
+    color: #213F7D;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.firstName {
+    display: flex;
+    align-items: center;
+    gap: 12;
+
+    @media not all and (min-width: 640px) {
+        display: none;
+    }
+}
+
+.firstName p {
+    color: #213F7D;
+}
+
+.chevron {
+    color: #213F7D;
+}
+
+.popoverContent {
+    @media not all and (min-width: 768px) {
+        width: 288px;
+    }
+
+    @media (min-width: 768px) {
+        width: 300px;
+    }
+
+    padding: 0px;
+    background-color: white;
+}
+
+.fullName {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #FAF6FE;
+    margin-top: 12px;
+}
+
+.avatar2 {
+    height: 60px;
+    width: 60px;
+    border-width: 1px;
+    border-color: #213F7D;
+    background-color: #213F7D;
+    color: white;
+}
+
+.fullNameP {
+    color: #213F7D;
+    font-weight: 500;
+}
+
+.homeCardWrapper {
+    color: #00214F;
+}
+
+.users {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.cardGrids {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    @media (min-width: 640px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    gap: 20px;
+}
+
+.cardWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: white;
+    padding: 20px;
+    width: 100%;
+    border-radius: 12px;
+}
+
+.image {
+    padding: 8px;
+    border-radius: 9999px;
+}
+
+.cardWrapper h2 {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.cardWrapper p {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 700;
+}
