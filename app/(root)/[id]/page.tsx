@@ -25,27 +25,33 @@ const user_nav_tabs = [
 const DynamicPage = () => {
     const { id } = useParams();
     const [user, setUser] = useState<User | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await fetch("https://run.mocky.io/v3/2c6df1a4-8bbd-4b44-9102-ea1574d175fe");
+                const response = await fetch("https://run.mocky.io/v3/2c6df1a4-8bbd-4b44-9102-ea1574d175fe", {
+                    headers: {
+                        'Cache-Control': 'no-cache',
+                    },
+                });
+
                 if (!response.ok) throw new Error("Failed to fetch user data");
 
                 const users: User[] = await response.json();
                 const userData = users.find((user) => user.id === Number(id));
-
                 setUser(userData || null);
-                console.log("User data fetched:", userData);
-            } catch (error) {
-                console.error("Error fetching user data:", error);
+            } catch (err) {
+                console.error("Fetch error:", err);
+                setError("Error loading user data. Please try again later.");
             }
         };
 
-        if (id) {
-            fetchUserData();
-        }
+        if (id) fetchUserData();
     }, [id]);
+
+    if (error) return <p>{error}</p>;
+    if (!user) return <p>Loading...</p>;
 
     if (!user) return <p>Loading...</p>;
     const { personalInfo, educationAndEmployment, socials, guarantors, ratings } = user;
