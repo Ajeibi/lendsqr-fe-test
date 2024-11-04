@@ -90,7 +90,7 @@ const DynamicPage = () => {
                         </div>
 
                         <div className="starsWrapper">
-                            <p className="">User's Tier</p>
+                            <p className="">User&apos;s Tier</p>
                             <div className="stars">
                                 {renderStars()}
                             </div>

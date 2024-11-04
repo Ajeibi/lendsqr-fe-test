@@ -6,11 +6,9 @@ import { FormControl, FormField, FormLabel, FormMessage } from '../ui/form';
 import { Input } from '../ui/input';
 import './styles.scss';
 
-const formSchema = authFormSchema('sign-up');
-
 interface CustomInputProps {
-    control: Control<z.infer<typeof formSchema>>,
-    name: FieldPath<z.infer<typeof formSchema>>,
+    control: Control<z.infer<ReturnType<typeof authFormSchema>>>,
+    name: FieldPath<z.infer<ReturnType<typeof authFormSchema>>>,
     label: string,
     placeholder: string
 }
