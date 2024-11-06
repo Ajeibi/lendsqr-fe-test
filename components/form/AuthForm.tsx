@@ -44,18 +44,19 @@ const AuthForm = ({ type }: { type: string }) => {
                 };
 
                 localStorage.setItem('user', JSON.stringify(userData));
-                console.log(userData)
 
-                document.cookie = "auth=true; path=/;";
+                document.cookie = "auth=true; path=/; max-age=86400";
 
-                router.push('/');
+                setTimeout(() => {
+                    router.push('/');
+                }, 100);
             }
+
             if (type === 'sign-in') {
                 const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
 
                 if (storedUser.email === data.email && storedUser.password === data.password) {
-                    document.cookie = "auth=true; path=/;";
-
+                    document.cookie = "auth=true; path=/; max-age=86400";
                     router.push('/');
                 } else {
                     alert('Invalid email or password');
@@ -67,6 +68,7 @@ const AuthForm = ({ type }: { type: string }) => {
             setIsLoading(false);
         }
     };
+
 
 
     return (
