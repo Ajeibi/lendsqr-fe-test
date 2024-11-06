@@ -2,7 +2,7 @@ import { User, columns } from "./columns";
 import { DataTable } from "./data-table";
 
 async function getUsers(): Promise<User[]> {
-    const res = await fetch("https://run.mocky.io/v3/2c6df1a4-8bbd-4b44-9102-ea1574d175fe", {
+    const res = await fetch("https://run.mocky.io/v3/fff9b91a-7a7b-4c69-b526-b8c31aac7417", {
         next: { revalidate: 60 },
     });
     if (!res.ok) throw new Error("Failed to fetch data");
